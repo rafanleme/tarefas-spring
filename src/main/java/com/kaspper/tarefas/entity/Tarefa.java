@@ -1,11 +1,29 @@
 package com.kaspper.tarefas.entity;
 
 import java.util.Date;
+import java.util.UUID;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tbl_tarefas")
 public class Tarefa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	UUID id;
+	
 	String descricao;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	Date data;
+	
 	Boolean urgente;
 	
 	public String getDescricao() {
